@@ -2,9 +2,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: go-app-ingress
+  namespace: ingress-nginx
 spec:
   rules:
-  - host: demo-go-app.com
+  - host: demo.infracloud.space
     http:
       paths:
       - backend:
@@ -15,9 +16,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: path-based-ing
+  namespace: ingress-nginx
 spec:
   rules:
-  - host: go-demo.com
+  - host: ingresstest.infracloud.space
     http:
       paths:
       - path: /prod
@@ -33,6 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: demo-go-app-svc
+  namespace: ingress-nginx
 spec:
   ports:
   - port: 80
@@ -44,6 +47,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: demo-go-app-svc-canary
+  namespace: ingress-nginx
 spec:
   ports:
   - port: 80
@@ -55,6 +59,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: demo-go-prod
+  namespace: ingress-nginx
 spec:
   replicas: 2
   template:
@@ -72,6 +77,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: demo-go-canary
+  namespace: ingress-nginx
 spec:
   replicas: 2
   template:

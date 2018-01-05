@@ -65,6 +65,8 @@ metadata:
   namespace: ingress-nginx
   labels:
     app: ingress-nginx
+data:
+  use-proxy-protocol: "true"    
 ---
 
 kind: ConfigMap
@@ -245,6 +247,7 @@ spec:
             - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
             - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
             - --annotations-prefix=nginx.ingress.kubernetes.io
+            - --publish-service=$(POD_NAMESPACE)/ingress-nginx
           env:
             - name: POD_NAME
               valueFrom:
