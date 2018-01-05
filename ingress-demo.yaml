@@ -15,6 +15,21 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  name: go-app-ingress-canary
+  namespace: ingress-nginx
+spec:
+  rules:
+  - host: demo-canary.infracloud.space
+    http:
+      paths:
+      - backend:
+          serviceName: demo-go-app-svc-canary
+          servicePort: 80
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
   name: path-based-ing
   namespace: ingress-nginx
 spec:
