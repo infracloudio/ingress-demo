@@ -24,4 +24,4 @@ The LoadBalancer in this case is a AWS LB. The manifest `service-l4.yaml` create
 
 Once the above two is setup, the ingress resources can be created which will be routed to specific pods. We are using two simple Go lang based apps to demonstrate path based and domain based routing. All of code resides in `ingress-demo.yaml`
 
-For example as of this writing, the URLs ingresstest.infracloud.space/prod and ingresstest.infracloud.space/canary both are served by same load balancer using ingress and controllers.
+For example as of this writing, the URLs ingresstest.infracloud.space/prod and ingresstest.infracloud.space/canary both are served by same load balancer using ingress and controllers. If you do not have a hosted zone on route53 or similar, just ping the load balancer to obtain its IP address and update the `hosts` file on your computer to resolve the LoadBalancer IP to the host names mentioned in the Ingress resources
